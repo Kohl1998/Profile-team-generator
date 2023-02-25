@@ -59,6 +59,17 @@ const school = {
     name: 'school'
 }
 
+const roles = ['Engineer', 'Intern', 'Finish building the team']
+
+// Further options for user to explore
+const menu = {
+    type: 'list',
+    message: 'What role would you like to add to the team?',
+    choices: roles,
+    name: 'role'
+}
+
+// Manager function to inititalise first set of questions
 managerFunc = () => {
     // Pushes questions from objects created above
     inquirer.prompts([Name, employeeID, emailAddress, githubUsername]).then((response) => {
@@ -66,6 +77,25 @@ managerFunc = () => {
     const managerAnswers = new Manager(response.Name, response.employeeID, response.emailAddress, response.officeNumber)
     // Pushes data into empty data array above to be appended later
     team.push[managerAnswers]
+    // To open menu after all prompts are completed
+    menu()
     })
 }
 
+// Menu function 
+
+menu = () => {
+inquirer.prompts([menu]).then((response) => {
+if (response.role === 'Engineer') {
+    EngineerFunc()
+}
+}
+)}
+
+// Function for engineer
+EngineerFunc = () => {
+    inquirer.prompts([Name, employeeID, emailAddress, githubUsername]).then((response) => {
+        const engineerAnswers = response(response.name, response.employeeID, response.emailAddress, response.githubUsername)
+        team.push[engineerAnswers]
+    })
+}
