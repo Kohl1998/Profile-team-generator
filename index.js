@@ -9,6 +9,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
+const internal = require("stream");
 
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
@@ -22,11 +23,15 @@ let team = []
 // Email address
 // Office number
 
+beginQuestions = () => {
+    managerFunc();
+}
+
 
 const Name = {
 type: 'input',
 message: 'What is your name?',
-name: 'Manager'
+name: 'name'
 }
 
 const employeeID = {
@@ -72,30 +77,44 @@ const menu = {
 // Manager function to inititalise first set of questions
 managerFunc = () => {
     // Pushes questions from objects created above
-    inquirer.prompts([Name, employeeID, emailAddress, githubUsername]).then((response) => {
+    inquirer.prompt([Name, employeeID, emailAddress, githubUsername]).then((response) => {
         // Stores manager responses in new variable 
     const managerAnswers = new Manager(response.Name, response.employeeID, response.emailAddress, response.officeNumber)
     // Pushes data into empty data array above to be appended later
     team.push[managerAnswers]
     // To open menu after all prompts are completed
-    menu()
+    menuQ()
     })
 }
 
 // Menu function 
 
-menu = () => {
-inquirer.prompts([menu]).then((response) => {
+menuQ = () => {
+inquirer.prompt([menu]).then((response) => {
 if (response.role === 'Engineer') {
-    EngineerFunc()
+    EngineerQuestions()
+} else if (response.role === 'Intern') {
+    InternQuestions()
+} else if (response.role === 'Finish building the team') {
+    finishBuilding()
 }
 }
 )}
 
 // Function for engineer
-EngineerFunc = () => {
-    inquirer.prompts([Name, employeeID, emailAddress, githubUsername]).then((response) => {
-        const engineerAnswers = response(response.name, response.employeeID, response.emailAddress, response.githubUsername)
+EngineerQuestions = () => {
+    inquirer.prompt([Name, employeeID, emailAddress, githubUsername]).then((response) => {
+        const engineerAnswers = (response.name, response.ID, response.email, response.githubUsername)
         team.push[engineerAnswers]
     })
 }
+
+// Function for intern
+InternQuestions = () => {
+    inquirer.prompt([Name, employeeID, emailAddress, school]).then((response) => {
+    const internAnswers = (response.name, response.ID, response.email, response.school)
+    team.push(internAnswers)
+    }
+)}
+
+beginQuestions();
