@@ -104,7 +104,7 @@ if (response.role === 'Engineer') {
 // Function for engineer
 EngineerQuestions = () => {
     inquirer.prompt([Name, employeeID, emailAddress, githubUsername]).then((response) => {
-        const engineerAnswers = (response.name, response.ID, response.email, response.githubUsername)
+        const engineerAnswers = new Engineer(response.name, response.ID, response.email, response.githubUsername)
         team.push[engineerAnswers]
     })
 }
@@ -112,7 +112,7 @@ EngineerQuestions = () => {
 // Function for intern
 InternQuestions = () => {
     inquirer.prompt([Name, employeeID, emailAddress, school]).then((response) => {
-    const internAnswers = (response.name, response.ID, response.email, response.school)
+    const internAnswers = new Intern(response.name, response.ID, response.email, response.school)
     team.push(internAnswers)
     }
 )}
