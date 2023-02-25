@@ -47,11 +47,25 @@ const officeNumber = {
     name: 'officeNum'
 }
 
-const githubUser = {
+const githubUsername = {
     type: 'input',
     message: 'What is your Github username?',
     name: 'github'
 }
 
+const school = {
+    type: 'input',
+    message: 'What school do you attend?',
+    name: 'school'
+}
 
+managerFunc = () => {
+    // Pushes questions from objects created above
+    inquirer.prompts([Name, employeeID, emailAddress, githubUsername]).then((response) => {
+        // Stores manager responses in new variable 
+    const managerAnswers = new Manager(response.Name, response.employeeID, response.emailAddress, response.officeNumber)
+    // Pushes data into empty data array above to be appended later
+    team.push[managerAnswers]
+    })
+}
 
