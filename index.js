@@ -13,3 +13,45 @@ const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
+// Empty array to hold responses from prompts
+let team = []
+
+// Manager
+// Name
+// Employee ID
+// Email address
+// Office number
+
+
+const Name = {
+type: 'input',
+message: 'What is your name?',
+name: 'Manager'
+}
+
+const employeeID = {
+type: 'input',
+message: 'What is your employee ID?',
+name: 'ID'
+}
+
+const emailAddress = {
+    type: 'email',
+    message: 'What is your email address?',
+    name: 'email'
+}
+
+const officeNumber = {
+    type: 'number',
+    message: 'What is your office number?',
+    name: 'officeNum'
+}
+
+const githubUser = {
+    type: 'input',
+    message: 'What is your Github username?',
+    name: 'github'
+}
+
+
+
