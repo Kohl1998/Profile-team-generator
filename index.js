@@ -77,9 +77,9 @@ const menu = {
 // Manager function to inititalise first set of questions
 managerFunc = () => {
     // Pushes questions from objects created above
-    inquirer.prompt([Name, employeeID, emailAddress, githubUsername]).then((response) => {
+    inquirer.prompt([Name, employeeID, emailAddress, officeNumber]).then((response) => {
         // Stores manager responses in new variable 
-    const managerAnswers = new Manager(response.Name, response.employeeID, response.emailAddress, response.officeNumber)
+    const managerAnswers = new Manager(response.Name, response.employeeID, response.emailAddress, response.officeNum)
     // Pushes data into empty data array above to be appended later
     team.push[managerAnswers]
     // To open menu after all prompts are completed
@@ -107,6 +107,7 @@ EngineerQuestions = () => {
         const engineerAnswers = new Engineer(response.name, response.ID, response.email, response.githubUsername)
         team.push[engineerAnswers]
     })
+
 }
 
 // Function for intern
