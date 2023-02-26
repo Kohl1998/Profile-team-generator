@@ -83,7 +83,7 @@ managerFunc = () => {
         // Stores manager responses in new variable 
     const managerAnswers = new Manager(response.name, response.id, response.email, response.officeNumber)
     // Pushes data into empty data array above to be appended later
-    team.push[managerAnswers]
+    team.push(managerAnswers)
     // To open menu after all prompts are completed
     menuQ()
     })
@@ -99,7 +99,7 @@ if (response.role === 'Engineer') {
     InternQuestions()
 } else {
     // Finishes building team
-    render(team)
+    writeFile(render(team));
 }
 }
 )}
@@ -109,7 +109,7 @@ EngineerQuestions = () => {
     inquirer.prompt([Name, employeeID, emailAddress, githubUsername]).then((response) => {
         const engineerAnswers = new Engineer(response.name, response.id, response.email, response.github)
         console.log(`Welcome to the team ${response.name}`)
-        team.push[engineerAnswers]
+        team.push(engineerAnswers)
         // Sets intern questions straight after
         InternQuestions()
     })
@@ -121,12 +121,24 @@ InternQuestions = () => {
     const internAnswers = new Intern(response.name, response.id, response.email, response.school)
     console.log(`Welcome to the team ${response.name}`)
     team.push(internAnswers)
-    render(team)
+    renderHTML(team)
     }
 )}
 
 // Initialises manager function
 beginQuestions();
 
-render(team)
+// Function to render objects within team array
+renderHTML = () => {
+    const staff = render(team)
+    // To check objects within new variable
+    console.log(staff)
+    // added .html to render file as html doc
+    writeFile("staff.html", staff)
+}
+
+writeFile = (File, data) => {
+    fs.writeFile(File, data, (err) => err ? console.log(err) : console.log(`Your team has been generated for you! ${File}`))
+}
+
 
