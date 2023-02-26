@@ -37,7 +37,7 @@ name: 'name'
 const employeeID = {
 type: 'input',
 message: 'What is your employee ID?',
-name: 'ID'
+name: 'id'
 }
 
 const emailAddress = {
@@ -49,7 +49,7 @@ const emailAddress = {
 const officeNumber = {
     type: 'number',
     message: 'What is your office number?',
-    name: 'officeNum'
+    name: 'officeNumber'
 }
 
 const githubUsername = {
@@ -79,8 +79,9 @@ const menu = {
 managerFunc = () => {
     // Pushes questions from objects created above
     inquirer.prompt([Name, employeeID, emailAddress, officeNumber]).then((response) => {
+        console.log(`Welcome to the team ${response.name}`)
         // Stores manager responses in new variable 
-    const managerAnswers = new Manager(response.Name, response.employeeID, response.emailAddress, response.officeNum)
+    const managerAnswers = new Manager(response.name, response.id, response.email, response.officeNumber)
     // Pushes data into empty data array above to be appended later
     team.push[managerAnswers]
     // To open menu after all prompts are completed
@@ -96,7 +97,7 @@ if (response.role === 'Engineer') {
     EngineerQuestions()
 } else if (response.role === 'Intern') {
     InternQuestions()
-} else  {
+} else {
     // Finishes building team
     render(team)
 }
@@ -106,7 +107,8 @@ if (response.role === 'Engineer') {
 // Function for engineer
 EngineerQuestions = () => {
     inquirer.prompt([Name, employeeID, emailAddress, githubUsername]).then((response) => {
-        const engineerAnswers = new Engineer(response.name, response.ID, response.email, response.githubUsername)
+        const engineerAnswers = new Engineer(response.name, response.id, response.email, response.github)
+        console.log(`Welcome to the team ${response.name}`)
         team.push[engineerAnswers]
         // Sets intern questions straight after
         InternQuestions()
@@ -116,12 +118,15 @@ EngineerQuestions = () => {
 // Function for intern
 InternQuestions = () => {
     inquirer.prompt([Name, employeeID, emailAddress, school]).then((response) => {
-    const internAnswers = new Intern(response.name, response.ID, response.email, response.school)
+    const internAnswers = new Intern(response.name, response.id, response.email, response.school)
+    console.log(`Welcome to the team ${response.name}`)
     team.push(internAnswers)
     render(team)
     }
 )}
 
+// Initialises manager function
 beginQuestions();
+
 render(team)
 
