@@ -74,6 +74,7 @@ const menu = {
     name: 'role'
 }
 
+
 // Manager function to inititalise first set of questions
 managerFunc = () => {
     // Pushes questions from objects created above
@@ -95,8 +96,9 @@ if (response.role === 'Engineer') {
     EngineerQuestions()
 } else if (response.role === 'Intern') {
     InternQuestions()
-} else if (response.role === 'Finish building the team') {
-    finishBuilding()
+} else  {
+    // Finishes building team
+    render(team)
 }
 }
 )}
@@ -106,8 +108,9 @@ EngineerQuestions = () => {
     inquirer.prompt([Name, employeeID, emailAddress, githubUsername]).then((response) => {
         const engineerAnswers = new Engineer(response.name, response.ID, response.email, response.githubUsername)
         team.push[engineerAnswers]
+        // Sets intern questions straight after
+        InternQuestions()
     })
-
 }
 
 // Function for intern
@@ -115,7 +118,10 @@ InternQuestions = () => {
     inquirer.prompt([Name, employeeID, emailAddress, school]).then((response) => {
     const internAnswers = new Intern(response.name, response.ID, response.email, response.school)
     team.push(internAnswers)
+    render(team)
     }
 )}
 
 beginQuestions();
+render(team)
+
