@@ -99,7 +99,8 @@ if (response.role === 'Engineer') {
     InternQuestions()
 } else {
     // Finishes building team
-    writeFile(render(team));
+    // Fixed bug by passing team array as argument
+    renderHTML(team);
 }
 }
 )}
