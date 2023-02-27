@@ -27,7 +27,7 @@ beginQuestions = () => {
     managerFunc();
 }
 
-
+// Resuable questions for each prompt
 const Name = {
 type: 'input',
 message: 'What is your name?',
@@ -137,7 +137,7 @@ renderHTML = () => {
     // added .html to render file as html doc
     writeFile("staff.html", staff)
 }
-
+// Function that actually writes data as staff.html
 writeFile = (File, data) => {
     fs.writeFile(File, data, (err) => err ? console.log(err) : console.log(`Your team has been generated for you! ${File}`))
 }
