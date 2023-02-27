@@ -26,7 +26,7 @@ I used 'GeeksforGeeks'  for support - https://www.geeksforgeeks.org/node-js-fs-w
 
 ## License
 
-MIT license
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## Features
 
