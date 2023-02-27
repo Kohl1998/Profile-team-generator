@@ -15,7 +15,7 @@ Finally, I setup a remote repo on Github to work from, which I then cloned to my
 
 ## Screenshot
 
-
+[![generated-HTML-doc.jpg](https://i.postimg.cc/g0TSBYSh/generated-HTML-doc.jpg)](https://postimg.cc/SXcfnppQ)
 
 ## Credits
 
