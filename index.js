@@ -100,6 +100,7 @@ if (response.role === 'Engineer') {
 } else {
     // Finishes building team
     // Fixed bug by passing team array as argument
+    console.log('Your team has been generated for you!')
     renderHTML(team);
 }
 }
