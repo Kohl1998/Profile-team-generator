@@ -1,3 +1,5 @@
+const Invester = require("../lib/Invester");
+
 // creates the team
 const generateTeam = team => {
 
@@ -58,6 +60,24 @@ const generateTeam = team => {
         `;
     };
 
+    const generateInvester = invester => {
+        return `
+        <div class="card employee-card">
+    <div class="card-header" style="background-color: #EDEADE;">
+        <h2 class="card-title">${invester.getName()}</h2>
+        <h3 class="card-title"><i class="fas fa-dollar-sign mr-2"></i>${invester.getRole()}</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">Investment: ${invester.getInvestment()}</li>
+            <li class="list-group-item">Email: <a href="mailto:${invester.getEmail()}">${invester.getEmail()}</a></li>
+            <li class="list-group-item">Previous: ${invester.getStartup()}</li>
+        </ul>
+    </div>
+</div>
+        `;
+    };
+
     const html = [];
 
     html.push(team
@@ -72,6 +92,11 @@ const generateTeam = team => {
     html.push(team
         .filter(employee => employee.getRole() === "Intern")
         .map(intern => generateIntern(intern))
+        .join("")
+    );
+    html.push(team
+        .filter(employee => employee.getRole() === "Investor")
+        .map(invester => generateInvester(invester))
         .join("")
     );
 

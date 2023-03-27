@@ -1,6 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const Invester = require("./lib/Invester")
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -40,6 +41,18 @@ message: 'What is your employee ID?',
 name: 'id'
 }
 
+const Investment = {
+    type: 'input',
+    message: 'How much did you invest for seed A', 
+    name: 'investment'
+}
+
+const startup = {
+    type: 'input',
+    message: 'What start-up have you previously invested in',
+    name: 'startup'
+}
+
 const emailAddress = {
     type: 'email',
     message: 'What is your email address?',
@@ -64,7 +77,7 @@ const school = {
     name: 'school'
 }
 
-const roles = ['Engineer', 'Intern', 'Finish building the team']
+const roles = ['Engineer', 'Intern', 'Finish building the team', 'Invester']
 
 // Further options for user to explore
 const menu = {
@@ -96,8 +109,11 @@ inquirer.prompt([menu]).then((response) => {
 if (response.role === 'Engineer') {
     EngineerQuestions()
 } else if (response.role === 'Intern') {
-    InternQuestions()
-} else {
+    InternQuestions() 
+} else if (response.role === 'Invester') {
+    investorQuestions()
+}
+else {
     // Finishes building team
     // Fixed bug by passing team array as argument
     console.log('Your team has been generated for you!')
@@ -123,9 +139,18 @@ InternQuestions = () => {
     const internAnswers = new Intern(response.name, response.id, response.email, response.school)
     console.log(`Welcome to the team ${response.name}`)
     team.push(internAnswers)
-    renderHTML(team)
-    }
+    investorQuestions()
+}
 )}
+
+investorQuestions = () => {
+    inquirer.prompt([Name, employeeID, emailAddress, Investment, startup]).then((response) => {
+        const investerResponse = new Invester(response.name, response.id, response.email, response.investment, response.startup)
+        team.push(investerResponse)
+        console.log(`Welcome to the team ${response.name} we are grateful for the seed funding!`)
+        renderHTML(team)
+})
+} 
 
 // Initialises manager function
 beginQuestions();
